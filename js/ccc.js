@@ -1,13 +1,6 @@
 $(document).ready(function () {
 
-    $("#hideButton").click(function () {
-        $("#full-discover").hide();
-    });
-
-    $("#disc").click(function () {
-        $("#full-discover").show();
-    });
-
+    $('#search-wrapper').hide();
     $('#map-wrapper').hide();
     $('#results-wrapper').hide();
     $('#about-wrapper').hide();
@@ -42,8 +35,22 @@ $(document).ready(function () {
 
 });
 
+
+// function myFunction(x) {
+//     if (x.matches) { // If media query matches
+//       document.getElementsByTagName('nav')[0].classList.remove('fixed-bottom');
+//     } else {
+//       //document.body.style.backgroundColor = "pink";
+//     }
+//   }
+  
+//   var x = window.matchMedia("(max-width: 768px)")
+//   myFunction(x) // Call listener function at run time
+//   x.addListener(myFunction) // Attach listener function on state changes 
+
+
 //set up the map
-var mymap = L.map('mapid').setView([47.6, -122.33], 10);
+var mymap = L.map('mapid').setView([47.6, -122.33],11);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -138,7 +145,7 @@ function populateResults(data) {
         // h2.textContent = data[i].name;
         // el.appendChild(h2);
 
-        el.innerHTML = "<p>"+data[i].name+"</p><p>"+data[i].url+"</p>";
+        el.innerHTML = "<p>"+data[i].name+"</p><p><a href=\""+data[i].url+"\">Website</a></p><p>Phone: "+data[i].phone+"</p>";
 
         document.getElementById('results-wrapper').appendChild(el);
         resultCount++;
